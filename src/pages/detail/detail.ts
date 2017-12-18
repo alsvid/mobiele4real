@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
+import { AddDebtPage } from '../add-debt/add-debt';
 /**
  * Generated class for the DetailPage page.
  *
@@ -17,9 +18,9 @@ export class DetailPage {
 
   title;
   description;
- 
-  constructor(public navParams: NavParams){
- 
+  public items = [];
+  constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataService: DataProvider, public navCtrl: NavController){
+    
   }
  
   ionViewDidLoad() {
@@ -27,4 +28,29 @@ export class DetailPage {
     this.description = this.navParams.get('item').description;
   }
 
+  addDebt(item) {
+    let addModal = this.modalCtrl.create(AddDebtPage);
+ 
+    addModal.onDidDismiss((item) => {
+ 
+          if(item){
+            this.saveItem(item);
+          }
+ 
+    });
+ 
+    addModal.present();
+  }
+ 
+  saveItem(item){
+    this.items.push(item);
+    this.dataService.save(this.items);
+  }
+ 
+  viewItem(item){
+    this.navCtrl.push(DetailPage, {
+      item: item
+    });
+  }
 }
+

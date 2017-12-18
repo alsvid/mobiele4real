@@ -12,15 +12,11 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   selector: 'page-add-item',
   templateUrl: 'add-item.html',
 })
-@Component({
-  selector: 'page-add-item',
-  templateUrl: 'add-item.html'
-})
 export class AddItemPage {
  
   title: string;
   description: string;
-  
+
   constructor(public navCtrl: NavController, public view: ViewController) {
  
   }

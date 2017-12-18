@@ -10,13 +10,14 @@ import { AddItemPage } from '../pages/add-item/add-item';
 import { DetailPage } from '../pages/detail/detail';
 import { DataProvider } from '../providers/data/data';
 import { IonicStorageModule } from '@ionic/storage';
-import { DebtPage } from '../pages/debt/debt';
+import { AddDebtPage } from '../pages/add-debt/add-debt';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     AddItemPage,
-    DetailPage
+    DetailPage,
+    AddDebtPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,8 @@ import { DebtPage } from '../pages/debt/debt';
     MyApp,
     HomePage,
     AddItemPage,
-    DetailPage
+    DetailPage,
+    AddDebtPage
   ],
   providers: [
     StatusBar,
