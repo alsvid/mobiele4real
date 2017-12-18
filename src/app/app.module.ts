@@ -6,25 +6,35 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-
+import { AddItemPage } from '../pages/add-item/add-item';
+import { DetailPage } from '../pages/detail/detail';
+import { DataProvider } from '../providers/data/data';
+import { IonicStorageModule } from '@ionic/storage';
+import { DebtPage } from '../pages/debt/debt';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    AddItemPage,
+    DetailPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    AddItemPage,
+    DetailPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataProvider, {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
