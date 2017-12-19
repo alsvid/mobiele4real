@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
-import { AddDebtPage } from '../add-debt/add-debt';
+import { AddDebtPage } from '../modals/add-debt/add-debt';
 /**
  * Generated class for the DetailPage page.
  *
@@ -11,46 +11,51 @@ import { AddDebtPage } from '../add-debt/add-debt';
 
 @IonicPage()
 @Component({
-  selector: 'page-detail',
-  templateUrl: 'detail.html',
+    selector: 'page-detail',
+    templateUrl: 'detail.html',
 })
+
 export class DetailPage {
+    public debts = [];
 
-  title;
-  description;
-  public items = [];
-  constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataService: DataProvider, public navCtrl: NavController){
-    
-  }
- 
-  ionViewDidLoad() {
-    this.title = this.navParams.get('item').title;
-    this.description = this.navParams.get('item').description;
-  }
+    title: string;
+    description: string;
 
-  addDebt(item) {
-    let addModal = this.modalCtrl.create(AddDebtPage);
- 
-    addModal.onDidDismiss((item) => {
- 
-          if(item){
-            this.saveItem(item);
-          }
- 
-    });
- 
-    addModal.present();
-  }
- 
-  saveItem(item){
-    this.items.push(item);
-    this.dataService.save(this.items);
-  }
- 
-  viewItem(item){
-    this.navCtrl.push(DetailPage, {
-      item: item
-    });
-  }
+
+    constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataService: DataProvider, public navCtrl: NavController) {
+        this.title = this.navParams.get('item').title;
+        this.description = this.navParams.get('item').description;
+
+        //Todo: filter title
+        this.dataService.getAllDebtData().then((debts) => {
+            if (debts != null) {
+                this.debts += debts;
+            }
+        });
+    }
+
+    addDebt(item) {
+        let addDebtModal = this.modalCtrl.create(AddDebtPage, { tripTitle: this.title });
+
+        addDebtModal.onDidDismiss(debt => {
+            if (debt != null) {
+                this.saveItem(item);
+            }
+        });
+
+        addDebtModal.present();
+    }
+
+
+    saveItem(item) {
+        this.debts += item;
+        this.dataService.saveDebts(this.debts);
+    }
+
+    viewItem(item) {
+        this.navCtrl.push(DetailPage, {
+            item: item
+        });
+    }
 }
 
