@@ -14,11 +14,9 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
- 
-<ion-content>
-  <ion-card>
-    <ion-card-content>
-      {{description}}
-    </ion-card-content>
-  </ion-card>
+ <p>{{description}}</p>
+ <ion-content *ngIf="debtlist.length > 0">
+  <ion-list>
+    <ion-item *ngFor="let debt of debtlist">{{debt.person}}</ion-item>
+  </ion-list>
 </ion-content>

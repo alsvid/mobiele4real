@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { AddDebtPage } from '../add-debt/add-debt';
+import { DebtPage } from '../debt/debt';
 /**
  * Generated class for the DetailPage page.
  *
@@ -18,9 +19,14 @@ export class DetailPage {
 
   title;
   description;
-  public items = [];
+  public debtlist: DebtPage[] = [];
   constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataService: DataProvider, public navCtrl: NavController){
-    
+ 
+      
+      if(this.dataService.getDebts().length > 0) {
+        this.debtlist = this.dataService.getDebts();
+      }
+      
   }
  
   ionViewDidLoad() {
@@ -29,7 +35,7 @@ export class DetailPage {
   }
 
   addDebt(item) {
-    let addModal = this.modalCtrl.create(AddDebtPage);
+    let addModal = this.modalCtrl.create(AddDebtPage, {trip: this.title});
  
     addModal.onDidDismiss((item) => {
  
@@ -43,14 +49,15 @@ export class DetailPage {
   }
  
   saveItem(item){
-    this.items.push(item);
-    this.dataService.save(this.items);
+    this.debtlist.push(item);
+    this.dataService.saveDebts(this.debtlist);
+
   }
- 
-  viewItem(item){
+  
+  /*viewItem(item){
     this.navCtrl.push(DetailPage, {
       item: item
     });
-  }
+  }*/
 }
 
