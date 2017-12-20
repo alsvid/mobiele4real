@@ -1,11 +1,11 @@
-###Tips
+### Tips
 
 - Gebruik 'ionic serve -c' voor console.logs in cmd
 - Ga er ni altijd van uit da een variabele een type is, dit is niet gwne java
 
 ### Wie wat gemaakt
 
-##Brecht:
+## Brecht:
  - 1e home versie
  - 1e detail versie
  - 1e add item versie
@@ -22,16 +22,16 @@
  - shit kapot gemaakt :^)
  
 
- ###Gepland
+ ### Gepland
 
-#21 dec Steven: 
+# 21 dec Steven: 
 Contact tab & CRUD contacten
 Todo's alsk tijd heb
 
-#22 dec:
+# 22 dec:
 
 
-###To do's
+### To do's
 
 - Filter debts per trip
 - Delete trips / Update & delete debts
