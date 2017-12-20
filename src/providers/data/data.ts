@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Debt } from '../../model/debt'
+import { Debt } from '../../model/debt';
 import { Trip } from '../../model/trip';
+import { Contact } from '../../model/contact';
 
 @Injectable()
 export class DataProvider {
 
     constructor(public storage: Storage) {
         //Debug purposes
-        storage.clear();
+        //storage.clear();
     }
 
     //Trips
@@ -17,13 +18,11 @@ export class DataProvider {
     }
 
     saveTrips(data: Trip[]) {
-        console.log('data.ts saveTrip for: ' + data + ' = ' + this.storage.get('trips'));
         this.storage.set('trips', data);
     }
 
     //Debts
     getAllDebtData() {
-        console.log('data.ts gotten all debtdata ' + this.storage.get('debts'));
         return this.storage.get('debts');
     }
 
@@ -33,6 +32,16 @@ export class DataProvider {
 
     getDebtDataForTitle(title: string) {
        //To do
+    }
+
+    //Contacts
+    getAllContactData() {
+        return this.storage.get('contacts');
+    }
+
+    saveContacts(data: Contact[]) {
+        console.log('saved contacts!')
+        this.storage.set('contacts', data);
     }
 
 }

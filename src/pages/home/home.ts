@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController, NavController } from 'ionic-angular';
-import { AddItemPage } from '../modals/add-item/add-item';
-import { DetailPage } from '../detail/detail';
+import { AddTripModal } from '../modals/add-trip/add-trip';
+import { TripDetailPage } from '../trip-detail/detail';
 import { DataProvider } from '../../providers/data/data';
 import { Trip } from '../../model/trip';
 
@@ -24,7 +24,7 @@ export class HomePage {
     }
 
     addItem() {
-        let addModal = this.modalCtrl.create(AddItemPage);
+        let addModal = this.modalCtrl.create(AddTripModal);
 
         addModal.onDidDismiss((newTrip) => {
             if (newTrip != null) {
@@ -42,6 +42,6 @@ export class HomePage {
     }
 
     viewItem(trip: Trip) {
-        this.navCtrl.push(DetailPage, { tripParam: trip});
+        this.navCtrl.push(TripDetailPage, { tripParam: trip});
     }
 }

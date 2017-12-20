@@ -9,10 +9,10 @@ import { ViewController } from 'ionic-angular';
  */
 
 @Component({
-    selector: 'page-add-item',
-    templateUrl: 'add-item.html',
+    selector: 'modal-add-trip',
+    templateUrl: 'add-trip.html',
 })
-export class AddItemPage {
+export class AddTripModal {
 
     title: string;
     description: string;

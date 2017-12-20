@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\model",
+    "\\src\\pages",
+    "\\src\\pages\\detail",
+    "\\src\\pages\\home",
+    "\\src\\pages\\modals",
+    "\\src\\pages\\modals\\add-debt",
+    "\\src\\pages\\modals\\add-item",
+    "\\src\\providers",
+    "\\src\\providers\\data",
+    "\\src\\theme"
+  ],
+  "SelectedNode": "\\README.md",
+  "PreviewInSolutionExplorer": false
+}

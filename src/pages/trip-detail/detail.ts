@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
-import { AddDebtPage } from '../modals/add-debt/add-debt';
+import { AddDebtModal } from '../modals/add-debt/add-debt';
 import { Debt } from '../../model/debt';
 import { Trip } from '../../model/trip';
 
-@IonicPage()
 @Component({
     selector: 'page-detail',
     templateUrl: 'detail.html',
 })
 
-export class DetailPage {
+export class TripDetailPage {
     debts: Debt[] = [];
     trip: Trip;
 
@@ -28,7 +27,7 @@ export class DetailPage {
     }
 
     addDebt(newItem) {
-        let addDebtModal = this.modalCtrl.create(AddDebtPage, { tripTitle: this.trip.title });
+        let addDebtModal = this.modalCtrl.create(AddDebtModal, { tripTitle: this.trip.title });
 
         addDebtModal.onDidDismiss(newDebt => {
             if (newDebt !== null) {

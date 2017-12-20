@@ -2,6 +2,7 @@
 
 - Gebruik 'ionic serve -c' voor console.logs in cmd
 - Ga er ni altijd van uit da een variabele een type is, dit is niet gwne java
+- Double tab ctr-R voor renames
 
 # Wie wat gemaakt
 
@@ -35,4 +36,6 @@ Todo's alsk tijd heb
 
 - Filter debts per trip
 - Delete trips / Update & delete debts
+- Contact index shizzle +1 werkend krijgen
+- tabs fixen
 - UI deftig laten uitzien
