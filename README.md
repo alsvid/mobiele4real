@@ -1,1 +1,38 @@
-### :point_right: This starter repo has moved to the [ionic-team/starters](https://github.com/ionic-team/starters/tree/master/ionic-angular/official/blank) repo! :point_left:
+###Tips
+
+- Gebruik 'ionic serve -c' voor console.logs in cmd
+- Ga er ni altijd van uit da een variabele een type is, dit is niet gwne java
+
+### Wie wat gemaakt
+
+##Brecht:
+ - 1e home versie
+ - 1e detail versie
+ - 1e add item versie
+ - 1e add debt versie (niet functioneel)
+ - basis ionic storage
+ - app.module.ts
+ - rework storage met arrays
+
+ ##Steven:
+ - debt functionaliteit
+ - debt toegevoegd bij trip (geen filter op tripnaam)
+ - UI verduidelijkingen
+ - Model klasses
+ - shit kapot gemaakt :^)
+ 
+
+ ###Gepland
+
+#21 dec Steven: 
+Contact tab & CRUD contacten
+Todo's alsk tijd heb
+
+#22 dec:
+
+
+###To do's
+
+- Filter debts per trip
+- Delete trips / Update & delete debts
+- UI deftig laten uitzien

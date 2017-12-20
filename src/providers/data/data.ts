@@ -1,43 +1,38 @@
-
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-
-/*
-  Generated class for the DataProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+import { Debt } from '../../model/debt'
+import { Trip } from '../../model/trip';
 
 @Injectable()
 export class DataProvider {
 
     constructor(public storage: Storage) {
+        //Debug purposes
+        storage.clear();
     }
 
     //Trips
     getAllTripData() {
-        console.log('data.ts getAllTrips')
         return this.storage.get('trips');
     }
 
-    saveTrips(data) {
-        console.log(data);
+    saveTrips(data: Trip[]) {
+        console.log('data.ts saveTrip for: ' + data + ' = ' + this.storage.get('trips'));
         this.storage.set('trips', data);
     }
 
     //Debts
     getAllDebtData() {
+        console.log('data.ts gotten all debtdata ' + this.storage.get('debts'));
         return this.storage.get('debts');
     }
 
-    saveDebts(data) {
-        console.log(data);
+    saveDebts(data: Debt[]) {
         this.storage.set('debts', data);
     }
 
-    getDebtDataForTitle(title) {
-        //return this.storage.forEach(element.tripTitle => {})
+    getDebtDataForTitle(title: string) {
+       //To do
     }
 
 }

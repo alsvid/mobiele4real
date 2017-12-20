@@ -2,12 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { AddDebtPage } from '../modals/add-debt/add-debt';
-/**
- * Generated class for the DetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Debt } from '../../model/debt';
+import { Trip } from '../../model/trip';
 
 @IonicPage()
 @Component({
@@ -16,30 +12,27 @@ import { AddDebtPage } from '../modals/add-debt/add-debt';
 })
 
 export class DetailPage {
-    public debts = [];
-
-    title: string;
-    description: string;
-
+    debts: Debt[] = [];
+    trip: Trip;
 
     constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataService: DataProvider, public navCtrl: NavController) {
-        this.title = this.navParams.get('item').title;
-        this.description = this.navParams.get('item').description;
+        this.trip = this.navParams.get('tripParam');
 
-        //Todo: filter title
-        this.dataService.getAllDebtData().then((debts) => {
-            if (debts != null) {
-                this.debts += debts;
+        //todo: filter op title
+        this.dataService.getAllDebtData().then((data) => {
+            if (data !== null) {
+                this.debts = data;
             }
         });
+
     }
 
-    addDebt(item) {
-        let addDebtModal = this.modalCtrl.create(AddDebtPage, { tripTitle: this.title });
+    addDebt(newItem) {
+        let addDebtModal = this.modalCtrl.create(AddDebtPage, { tripTitle: this.trip.title });
 
-        addDebtModal.onDidDismiss(debt => {
-            if (debt != null) {
-                this.saveItem(item);
+        addDebtModal.onDidDismiss(newDebt => {
+            if (newDebt !== null) {
+                this.saveItem(newDebt);
             }
         });
 
@@ -47,15 +40,10 @@ export class DetailPage {
     }
 
 
-    saveItem(item) {
-        this.debts += item;
+    saveItem(newDebt) {
+        this.debts.push(newDebt);
         this.dataService.saveDebts(this.debts);
     }
 
-    viewItem(item) {
-        this.navCtrl.push(DetailPage, {
-            item: item
-        });
-    }
 }
 

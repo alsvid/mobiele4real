@@ -11,6 +11,7 @@ import { DataProvider } from '../providers/data/data';
 import { IonicStorageModule } from '@ionic/storage';
 import { AddItemPage } from '../pages/modals/add-item/add-item';
 import { AddDebtPage } from '../pages/modals/add-debt/add-debt';
+
 @NgModule({
   declarations: [
     MyApp,
