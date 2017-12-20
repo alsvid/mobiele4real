@@ -14,6 +14,11 @@ export class ContactPage {
 
     constructor(public modalCtrl: ModalController, public dataService: DataProvider) {
 
+        this.dataService.getAllContactData().then((data) => {
+            if (data !== null) {
+                this.contacts = data;
+            }
+        });
     }
 
     addContact() {

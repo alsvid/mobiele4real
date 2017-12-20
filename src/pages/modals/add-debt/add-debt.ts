@@ -1,36 +1,22 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
-
+import { Debt } from '../../../model/debt';
 @Component({
     selector: 'page-add-debt',
     templateUrl: 'add-debt.html',
 })
 
 export class AddDebtModal {
-
+    debt: Debt;
     tripTitle: string;
-    person: string;
-    description: string;
-    amount: number;
-    currency: string;
-    paid: boolean;
 
     constructor(public view: ViewController, params: NavParams) {
         this.tripTitle = params.get('tripTitle');
+        this.debt = new Debt(this.tripTitle, '', '', 0, '', false);
     }
 
     saveItem() {
-
-        let newDebt = {
-            trip: this.tripTitle,
-            person: this.person,
-            description: this.description,
-            amount: this.amount,
-            currency: this.currency,
-            paid: this.paid
-        };
-
-        this.view.dismiss(newDebt);
+        this.view.dismiss(this.debt);
     }
 
     close() {

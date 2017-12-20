@@ -7,10 +7,10 @@
 <ion-header>
   <ion-navbar color="secondary">
     <ion-title>
-      {{trip.title}}
+      {{debt.tripTitle}}
     </ion-title>
     <ion-title>
-      {{trip.description}}
+      {{debt.description}}
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="addDebt()">Add dept<ion-icon name="add-circle"></ion-icon></button>
@@ -23,12 +23,10 @@
 
   </ion-card>
   <ion-list>
-    <ion-item-sliding *ngFor="let debt of debts">
-      <ion-item>{{debt.description}}</ion-item>
-      <ion-item>{{debt.person}}</ion-item>
-      <ion-item>{{debt.amount}}</ion-item>
-      <ion-item>{{debt.currency}}</ion-item>
-      <ion-item>{{debt.paid}}</ion-item>  
-    </ion-item-sliding>
+    <ion-item>{{debt.person}}</ion-item>
+    <ion-item>{{debt.amount}}</ion-item>
+    <ion-item>{{debt.currency}}</ion-item>
+    <ion-item>{{debt.paid}}</ion-item>
+
   </ion-list>
 </ion-content>

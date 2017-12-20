@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
+import { Contact } from '../../../model/contact';
 
 @Component({
     selector: 'modal-add-contact',
@@ -7,19 +8,14 @@ import { ViewController } from 'ionic-angular';
 })
 
 export class AddContactModal {
-    firstName: string;
-    lastName: string;
+    contact: Contact;
 
     constructor(public view: ViewController) {
+        this.contact = new Contact('', '');
     }
 
     saveItem() {
-        let newContact = {
-            firstName: this.firstName,
-            lastName: this.lastName
-        }
-
-        this.view.dismiss(newContact);
+        this.view.dismiss(this.contact);
     }
 
     close() {

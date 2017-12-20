@@ -9,7 +9,7 @@ export class DataProvider {
 
     constructor(public storage: Storage) {
         //Debug purposes
-        //storage.clear();
+       // storage.clear();
     }
 
     //Trips
@@ -40,7 +40,6 @@ export class DataProvider {
     }
 
     saveContacts(data: Contact[]) {
-        console.log('saved contacts!')
         this.storage.set('contacts', data);
     }
 

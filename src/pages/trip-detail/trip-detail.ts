@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
+
+import { DebtDetailPage } from '../debt-detail/debt-detail';
 import { AddDebtModal } from '../modals/add-debt/add-debt';
+import { EditDebtModal } from '../modals/edit-debt/edit-debt';
 import { Debt } from '../../model/debt';
 import { Trip } from '../../model/trip';
 
 @Component({
-    selector: 'page-detail',
-    templateUrl: 'detail.html',
+    selector: 'page-trip-detail',
+    templateUrl: 'trip-detail.html',
 })
 
 export class TripDetailPage {
@@ -38,11 +41,35 @@ export class TripDetailPage {
         addDebtModal.present();
     }
 
+    editDebt(debt: Debt) {
+        let editModal = this.modalCtrl.create(EditDebtModal, { debt: debt });
+        let index = this.debts.indexOf(debt)
+
+        editModal.onDidDismiss((newD) => {
+            if (newD != null) {
+                this.debts[index] = newD;
+            }
+        });
+        editModal.present();
+
+    }
+
 
     saveItem(newDebt) {
         this.debts.push(newDebt);
         this.dataService.saveDebts(this.debts);
     }
 
+    deleteDebt(debt: Debt) {
+        let index = this.debts.indexOf(debt);
+
+        if (index > -1) {
+            this.debts.splice(index, 1);
+        }
+    }
+
+    viewDebt(debt: Debt) {
+        this.navCtrl.push(DebtDetailPage, { debt: debt });
+    }
 }
 

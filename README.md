@@ -21,13 +21,16 @@
  - UI verduidelijkingen
  - Model klasses
  - shit kapot gemaakt :^)
+ - shit gefixed
+ - modals cleanup met model klasses
+ - CRUD contacts
+ - UD trips/debts
+ - tabs
+ - start van contacten toevoegen aan trips
  
 
  # Gepland
 
-### 21 dec Steven: 
-Contact tab & CRUD contacten
-Todo's alsk tijd heb
 
 ### 22 dec:
 
@@ -35,7 +38,9 @@ Todo's alsk tijd heb
 # To do's
 
 - Filter debts per trip
-- Delete trips / Update & delete debts
+- select contacten bij trip aanmaken
+- create errors bij nullwaarden -> nullwaarden zorgen voor crashes
 - Contact index shizzle +1 werkend krijgen
-- tabs fixen
+- debt overview page + debts per trip beter eruit laten zien
 - UI deftig laten uitzien
+- https://ucll-mobile.wikispaces.com/Features

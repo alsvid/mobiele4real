@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
-import { Contact } from '../../../model/contact';
+import { Trip } from '../../../model/trip';
 
 @Component({
-    selector: 'modal-edit-contact',
-    templateUrl: 'edit-contact.html',
+    selector: 'modal-edit-trip',
+    templateUrl: 'edit-trip.html',
 })
 
-export class EditContactModal {
-    contact: Contact;
+export class EditTripModal {
+    trip: Trip;
 
     constructor(public view: ViewController, params: NavParams) {
-        this.contact = params.get('contact');
-
+        this.trip = params.get('trip');
     }
 
     updateItem() {
-        this.view.dismiss(this.contact);
+        this.view.dismiss(this.trip);
     }
 
     close() {

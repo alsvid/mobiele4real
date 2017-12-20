@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>
+      Edit a debt.
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Trip name</ion-label>
+      <ion-input type="text" [(ngModel)]="debt.tripTitle" readonly="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Debt description</ion-label>
+      <ion-input type="text" [(ngModel)]="debt.description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Debt amount</ion-label>
+      <ion-input type="text" [(ngModel)]="debt.amount"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Debt currency</ion-label>
+      <ion-input type="text" [(ngModel)]="debt.currency"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Debt paid</ion-label>
+      <ion-input type="text" [(ngModel)]="debt.paid"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button full ion-button color="secondary" (click)="updateItem()">Save</button>
+
+</ion-content>

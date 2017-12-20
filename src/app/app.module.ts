@@ -6,13 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { TripDetailPage } from '../pages/trip-detail/detail';
+import { TripDetailPage } from '../pages/trip-detail/trip-detail';
+import { DebtDetailPage } from '../pages/debt-detail/debt-detail';
 import { DataProvider } from '../providers/data/data';
 import { IonicStorageModule } from '@ionic/storage';
 import { AddTripModal } from '../pages/modals/add-trip/add-trip';
 import { AddDebtModal } from '../pages/modals/add-debt/add-debt';
 import { AddContactModal } from '../pages/modals/add-contact/add-contact';
 import { EditContactModal } from '../pages/modals/edit-contact/edit-contact';
+import { EditTripModal } from '../pages/modals/edit-trips/edit-trip'
+import { EditDebtModal } from '../pages/modals/edit-debt/edit-debt';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ContactPage } from '../pages/contact/contact';
 import { ConfigPage } from '../pages/config/config';
@@ -23,8 +26,11 @@ import { ConfigPage } from '../pages/config/config';
         HomePage,
         AddTripModal,
         TripDetailPage,
+        DebtDetailPage,
         AddContactModal,
         EditContactModal,
+        EditTripModal,
+        EditDebtModal,
         AddDebtModal,
         TabsPage,
         ConfigPage,
@@ -41,9 +47,12 @@ import { ConfigPage } from '../pages/config/config';
         HomePage,
         AddTripModal,
         TripDetailPage,
+        DebtDetailPage,
         AddDebtModal,
         EditContactModal,
         AddContactModal,
+        EditTripModal,
+        EditDebtModal,
         TabsPage,
         ConfigPage,
         ContactPage

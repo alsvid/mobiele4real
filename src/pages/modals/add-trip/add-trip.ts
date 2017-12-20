@@ -1,37 +1,50 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
-
-/**
- * Generated class for the AddItemPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Trip } from '../../../model/trip';
+import { Contact } from '../../../model/contact';
+import { DataProvider } from "../../../providers/data/data";
 
 @Component({
     selector: 'modal-add-trip',
     templateUrl: 'add-trip.html',
 })
 export class AddTripModal {
+    trip: Trip;
+    contacts: Contact[] = [];
+    selectedContacts: Contact[] = [];
 
-    title: string;
-    description: string;
+    constructor(public view: ViewController, public dataService: DataProvider) {
 
-    constructor(public view: ViewController) {
-
+        console.log('constructor' + this.contacts.toString);
+        this.loadContacts();
+        this.trip = new Trip('', '');
     }
 
     saveItem() {
-        let item = {
-            title: this.title,
-            description: this.description
-        };
+        console.log('saveitem'+this.selectedContacts.toString);
 
-        this.view.dismiss(item);
+        this.contacts.forEach(c => {
+            this.trip.addParticipant(c);
+        })
+        this.view.dismiss(this.trip);
     }
 
     close() {
         this.view.dismiss();
     }
 
+    valueChange() {
+        this.loadContacts();
+        console.log('valChangd'+this.selectedContacts.toString);
+        console.log(this.contacts.toString);
+
+    }
+
+    loadContacts() {
+        this.dataService.getAllContactData().then((data) => {
+            if (data !== null) {
+                this.contacts = data;
+            }
+        });
+    }
 }

@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
-import { Contact } from '../../../model/contact';
+import { Debt } from '../../../model/debt';
 
 @Component({
-    selector: 'modal-edit-contact',
-    templateUrl: 'edit-contact.html',
+    selector: 'modal-edit-debt',
+    templateUrl: 'edit-debt.html',
 })
 
-export class EditContactModal {
-    contact: Contact;
+export class EditDebtModal {
+    debt: Debt;
 
     constructor(public view: ViewController, params: NavParams) {
-        this.contact = params.get('contact');
-
+        this.debt = params.get('debt');
     }
 
     updateItem() {
-        this.view.dismiss(this.contact);
+        this.view.dismiss(this.debt);
     }
 
     close() {
