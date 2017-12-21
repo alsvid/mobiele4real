@@ -16,7 +16,9 @@
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
-
+    <!-- Added to show splashscreen -->
+    <preference name="FadeSplashScreen" value="false"/>
+    <preference name="AutoHideSplashScreen" value="false"/>
     <!--
       Change these to configure how the splashscreen displays and fades in/out.
       More info here: https://github.com/apache/cordova-plugin-splashscreen

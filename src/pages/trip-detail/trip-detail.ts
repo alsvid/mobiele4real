@@ -5,6 +5,7 @@ import { DataProvider } from '../../providers/data/data';
 import { DebtDetailPage } from '../debt-detail/debt-detail';
 import { AddDebtModal } from '../modals/add-debt/add-debt';
 import { EditDebtModal } from '../modals/edit-debt/edit-debt';
+import { GetUserModal } from '../modals/get-user/get-user';
 import { Debt } from '../../model/debt';
 import { Trip } from '../../model/trip';
 
@@ -54,6 +55,18 @@ export class TripDetailPage {
 
     }
 
+    getUserDebts() {
+        let userModal = this.modalCtrl.create(GetUserModal, {tripTitle: this.trip.title});
+
+        userModal.onDidDismiss((personaldata, user) => {
+            if (personaldata != null && user != null) {
+                this.trip.title = user;
+                this.debts = personaldata;
+            }
+        });
+
+        userModal.present();
+    }
 
     saveItem(newDebt) {
         this.debts.push(newDebt);

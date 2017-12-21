@@ -43,4 +43,21 @@ export class DataProvider {
         this.storage.set('contacts', data);
     }
 
+    getDebtsForUserInTrip(user: string, trip:string): Debt[] {
+        //PLEASE FIX DAT TRIPTITLE OOK MEE IS OPGESLAGEN, GEEN KEY = GEEN QUERY FFS
+        let debtlist: Debt[] = [];
+        this.getAllDebtData().then(element => {
+            console.log("this is first element");
+            console.log(element);
+            element.forEach(element1 => {
+                console.log("this is second element");
+                console.log(element1);
+                    if (element1.person.toLowerCase() == user.toLowerCase() /*&& element1.trip.tripTitle.toLowerCase() == trip.toLowerCase()*/) {
+                        debtlist.push(element1);
+                    }
+                });
+            });
+        return debtlist;
+    }
+
 }

@@ -19,6 +19,8 @@ import { EditDebtModal } from '../pages/modals/edit-debt/edit-debt';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ContactPage } from '../pages/contact/contact';
 import { ConfigPage } from '../pages/config/config';
+import { GetUserModal } from '../pages/modals/get-user/get-user';
+import { SplashPage } from '../pages/splash/splash'
 
 @NgModule({
     declarations: [
@@ -34,7 +36,9 @@ import { ConfigPage } from '../pages/config/config';
         AddDebtModal,
         TabsPage,
         ConfigPage,
-        ContactPage
+        ContactPage,
+        GetUserModal,
+        SplashPage
     ],
     imports: [
         BrowserModule,
@@ -55,7 +59,9 @@ import { ConfigPage } from '../pages/config/config';
         EditDebtModal,
         TabsPage,
         ConfigPage,
-        ContactPage
+        ContactPage,
+        GetUserModal,
+        SplashPage
     ],
     providers: [
         StatusBar,

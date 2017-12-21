@@ -9,22 +9,19 @@
     <ion-title>
       {{trip.title}}
     </ion-title>
-    <ion-title>
-      {{trip.description}}
-    </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="addDebt()">Add dept<ion-icon name="add-circle"></ion-icon></button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="getUserDebts()">Get personal debt<ion-icon name="md-person"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-
-  </ion-card>
-  <ion-list>
-    <ion-item-sliding *ngFor="let debt of debts">
-      <ion-item (click)="viewDebt(debt)">{{debt.description}}: {{debt.amount}}</ion-item>
+<ion-list>
+  <ion-card *ngFor="let debt of debts">
+      <ion-item (click)="viewDebt(debt)">{{debt.person}} <span style="float: right; color: darkgreen">{{debt.amount}} {{debt.currency}}</span></ion-item>
       <ion-item-options>
         <button ion-button icon-only (click)="editDebt(debt)" color="light">
           <ion-icon name="build"></ion-icon>
@@ -33,7 +30,6 @@
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>
-    </ion-item-sliding>
-
+  </ion-card>
   </ion-list>
 </ion-content>
