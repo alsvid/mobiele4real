@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="secondary">
     <ion-title>
-      Add debt for trip '{{tripTitle}}'.
+      Add debt for trip {{tripTitle}}
     </ion-title>
       <ion-buttons end>
         <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
@@ -14,22 +14,22 @@
  
     <ion-item>
       <ion-label floating>Person</ion-label>
-      <ion-input type="text" [(ngModel)]="debt.person"></ion-input>
+      <ion-input type="text" [(ngModel)]="person"></ion-input>
     </ion-item>
  
     <ion-item>
       <ion-label floating>Description</ion-label>
-      <ion-input type="text" [(ngModel)]="debt.description"></ion-input>
+      <ion-input type="text" [(ngModel)]="description"></ion-input>
     </ion-item>
 
      <ion-item>
       <ion-label floating>Amount</ion-label>
-      <ion-input type="text" [(ngModel)]="debt.amount"></ion-input>
+      <ion-input type="text" [(ngModel)]="amount"></ion-input>
     </ion-item>
 
      <ion-item>
       <ion-label floating>Currency</ion-label>
-      <ion-input type="text" [(ngModel)]="debt.currency"></ion-input>
+      <ion-input type="text" [(ngModel)]="currency"></ion-input>
     </ion-item>
  
   </ion-list>

@@ -9,7 +9,7 @@ export class DataProvider {
 
     constructor(public storage: Storage) {
         //Debug purposes
-       // storage.clear();
+       //storage.clear();
     }
 
     //Trips
@@ -22,8 +22,23 @@ export class DataProvider {
     }
 
     //Debts
-    getAllDebtData() {
-        return this.storage.get('debts');
+    getAllDebtDataForTrip(tripTitle: string): Debt[] {
+        let debtlist: Debt[] = [];
+        this.storage.get('debts').then(element => {
+            if (element == null || element.length == 0) {
+                return null;
+            }
+            element.forEach(element1 => {
+                if (element1 != null && element1.tripTitle.toLowerCase() == tripTitle.toLowerCase()) {
+                    let tempDebt: Debt = new Debt(element1.tripTitle, element1.person, element1.description, parseInt(element1.amount), element1.currency, element1.paid);
+                    debtlist.push(tempDebt);
+                }
+            });
+        });
+        if (debtlist.length > 0 && debtlist != null) {return debtlist}
+        else {
+            return null;
+        }
     }
 
     saveDebts(data: Debt[]) {
@@ -46,18 +61,39 @@ export class DataProvider {
     getDebtsForUserInTrip(user: string, trip:string): Debt[] {
         //PLEASE FIX DAT TRIPTITLE OOK MEE IS OPGESLAGEN, GEEN KEY = GEEN QUERY FFS
         let debtlist: Debt[] = [];
-        this.getAllDebtData().then(element => {
-            console.log("this is first element");
-            console.log(element);
+        console.log("started method");
+        this.storage.get('debts').then(element => {
+            console.log("Tried getting element ");
+            if (element == null) {
+                return null;
+            }
             element.forEach(element1 => {
+                if (element1 == null) { return null }
                 console.log("this is second element");
                 console.log(element1);
-                    if (element1.person.toLowerCase() == user.toLowerCase() /*&& element1.trip.tripTitle.toLowerCase() == trip.toLowerCase()*/) {
+                    if (element1.person.toLowerCase() == user.toLowerCase() && element1.tripTitle.toLowerCase() == trip.toLowerCase()) {
                         debtlist.push(element1);
                     }
                 });
             });
-        return debtlist;
+        if (debtlist.length > 0 && debtlist != null) {return debtlist}
+        else {
+            return null;
+        }
     }
+
+    temporaryTripTitleGet(): Promise<any> {
+        return this.storage.get('temptitle');
+    }
+
+    temporaryTripTitleSave(title: Trip) {
+        this.storage.set('temptitle',title);
+    }
+
+    temporaryTripTitleDelete() {
+        this.storage.remove('temptitle');
+    }
+
+    
 
 }

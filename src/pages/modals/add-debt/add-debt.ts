@@ -1,22 +1,35 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { Debt } from '../../../model/debt';
+import { Trip } from '../../../model/trip';
+import { DataProvider } from '../../../providers/data/data';
 @Component({
     selector: 'page-add-debt',
     templateUrl: 'add-debt.html',
 })
 
 export class AddDebtModal {
-    debt: Debt;
+    
+    person: string;
+    description: string;
+    amount: number;
+    currency: string;
+    paid: boolean;
     tripTitle: string;
 
-    constructor(public view: ViewController, params: NavParams) {
-        this.tripTitle = params.get('tripTitle');
-        this.debt = new Debt(this.tripTitle, '', '', 0, '', false);
+    constructor(public view: ViewController, public params: NavParams, public dataService: DataProvider) {
+      
     }
 
     saveItem() {
-        this.view.dismiss(this.debt);
+    let triptemp: Trip;
+    this.dataService.temporaryTripTitleGet().then(response =>
+    {
+        triptemp = new Trip(response.title, response.description);
+    });
+    let newDebt: Debt = new Debt(triptemp.title, this.person, this.description, this.amount, this.currency, false);
+    this.dataService.temporaryTripTitleDelete();
+    this.view.dismiss(newDebt);
     }
 
     close() {

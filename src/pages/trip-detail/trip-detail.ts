@@ -20,18 +20,21 @@ export class TripDetailPage {
 
     constructor(public navParams: NavParams, public modalCtrl: ModalController, public dataService: DataProvider, public navCtrl: NavController) {
         this.trip = this.navParams.get('tripParam');
-
-        //todo: filter op title
-        this.dataService.getAllDebtData().then((data) => {
-            if (data !== null) {
-                this.debts = data;
-            }
-        });
+        if (
+        this.dataService.getAllDebtDataForTrip(this.trip.title) != null
+        ) 
+        {
+         this.debts = this.dataService.getAllDebtDataForTrip(this.trip.title);
+        }
+        else {
+            this.addDebt();
+        }
 
     }
 
-    addDebt(newItem) {
-        let addDebtModal = this.modalCtrl.create(AddDebtModal, { tripTitle: this.trip.title });
+    addDebt() {
+        this.dataService.temporaryTripTitleSave(this.trip);
+        let addDebtModal = this.modalCtrl.create(AddDebtModal);
 
         addDebtModal.onDidDismiss(newDebt => {
             if (newDebt !== null) {
